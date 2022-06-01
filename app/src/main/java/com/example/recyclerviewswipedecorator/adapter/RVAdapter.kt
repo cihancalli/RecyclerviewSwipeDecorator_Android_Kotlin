@@ -1,4 +1,4 @@
-package com.example.recyclerviewswipedecorator
+package com.example.recyclerviewswipedecorator.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.recyclerviewswipedecorator.R
 import com.example.recyclerviewswipedecorator.model.WeekModel
 
 class RVAdapter(val context: Context, val weekList:List<WeekModel>)
@@ -33,6 +34,15 @@ class RVAdapter(val context: Context, val weekList:List<WeekModel>)
             day_7 = view.findViewById(R.id.textView_day_7)
         }
     }
+
+    fun deleteItem(i:Int){
+
+    }
+
+    fun addItem(i:Int,week:WeekModel){
+
+    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val design = LayoutInflater.from(context).inflate(R.layout.week_row,parent,false)

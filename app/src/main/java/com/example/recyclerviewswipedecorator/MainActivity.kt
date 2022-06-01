@@ -2,14 +2,18 @@ package com.example.recyclerviewswipedecorator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.recyclerviewswipedecorator.adapter.RVAdapter
+import com.example.recyclerviewswipedecorator.adapter.SwipeGesture
 import com.example.recyclerviewswipedecorator.model.WeekModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var weekList:ArrayList<WeekModel>
-    private lateinit var adapter:RVAdapter
+    private lateinit var adapter: RVAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +36,20 @@ class MainActivity : AppCompatActivity() {
         weekList.add(w5)
 
         adapter = RVAdapter(this,weekList)
+
+        val swipegetture = object : SwipeGesture(){
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                weekList.removeAt(position)
+                rv.adapter?.notifyItemRemoved(position)
+
+            }
+        }
+
+        val itemTouchHelper = ItemTouchHelper(swipegetture)
+        itemTouchHelper.attachToRecyclerView(rv)
+
         rv.adapter  = adapter
     }
 }
