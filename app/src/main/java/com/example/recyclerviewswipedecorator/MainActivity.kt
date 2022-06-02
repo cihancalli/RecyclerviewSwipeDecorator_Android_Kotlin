@@ -2,6 +2,8 @@ package com.example.recyclerviewswipedecorator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MotionEvent
+import android.view.View
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -48,8 +50,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         val itemTouchHelper = ItemTouchHelper(swipegetture)
-        itemTouchHelper.attachToRecyclerView(rv)
+        //itemTouchHelper.attachToRecyclerView(rv)
+
 
         rv.adapter  = adapter
     }
 }
+
+
